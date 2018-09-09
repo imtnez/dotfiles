@@ -1,0 +1,22 @@
+export ZSH="$ZDOTDIR/.oh-my-zsh"
+
+source "$ADOTDIR/.antigen.zsh"
+
+antigen use oh-my-zsh
+
+antigen bundle git
+
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
+
+antigen theme agnoster
+antigen apply
+
+#plugins=(
+#  git
+#)
+#
+#source $ZSH/oh-my-zsh.sh
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"

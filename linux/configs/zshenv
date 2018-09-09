@@ -1,0 +1,9 @@
+ZDOTDIR="$HOME/.local"
+HISTFILE="$ZDOTDIR/.zsh_history"
+
+ADOTDIR="$ZDOTDIR"
+
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]='none'
+ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green'
+ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
