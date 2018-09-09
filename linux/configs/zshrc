@@ -12,6 +12,9 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen theme agnoster
 antigen apply
 
+typeset -gaU path
+path=("$HOME/.local/bin" $path)
+
 #plugins=(
 #  git
 #)

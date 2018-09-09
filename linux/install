@@ -4,8 +4,13 @@ script_path=`realpath "$0"`
 script_dir=`dirname "$script_path"`
 
 slinks=(
+"$script_dir/binaries/tmux-*:$HOME/.local/bin/tmux"
+"$script_dir/binaries/nvim-*:$HOME/.local/bin/nvim"
+"$script_dir/binaries/mosh-client-*:$HOME/.local/bin/mosh-client"
+"$script_dir/binaries/mosh-server-*:$HOME/.local/bin/mosh-server"
 "$script_dir/configs/tmux.conf:$HOME/.tmux.conf"
 "$script_dir/configs/init.vim:$HOME/.vimrc"
+"$script_dir/configs/init.vim:$HOME/.config/nvim/init.vim"
 "$script_dir/configs/init.vim:$HOME/.config/nvim/init.vim"
 )
 
