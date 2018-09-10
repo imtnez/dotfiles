@@ -10,6 +10,7 @@ Plugin 'vim-airline/vim-airline'            " theme
 Plugin 'vim-airline/vim-airline-themes'     " theme
 
 " Plugin 'OmniCppComplete'
+Plugin 'fatih/vim-go'                       " Go support
 Plugin 'scrooloose/nerdtree'                " file tree explorer
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'             " git diff before line numbers

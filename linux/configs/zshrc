@@ -18,6 +18,7 @@ typeset -gaU path
 path=("." $path)
 path=("$HOME/.local/sbin" $path)
 path=("$HOME/.local/bin" $path)
+path=("$HOME/.local/go/bin" $path)
 
 alias .=source
 alias vim=nvim
