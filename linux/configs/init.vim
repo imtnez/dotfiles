@@ -1,8 +1,8 @@
 set encoding=utf-8
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set rtp+=~/.local/.vim/bundle/Vundle.vim
+call vundle#begin('~/.local/.vim/bundle')
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'                 " git
@@ -90,7 +90,11 @@ set expandtab
 set tabstop=3
 set shiftwidth=3
 
-set tags+=~/.vim/tags/cpp
+" directory for swapfiles
+set directory=$HOME/.local/.vim/swapfiles
+
+" directory for parsed tags
+set tags+=~/.local/.vim/tags/cpp
 set tags+=/sources/git/wlp-fo/.git/tags
 " OmniCppComplete
 let OmniCpp_NamespaceSearch = 1
@@ -137,9 +141,6 @@ noremap tt :tab split<CR>
 
 " nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
 set hlsearch
-
-" directory for swapfiles
-set directory=$HOME/.vim/swapfiles//
 
 " path directory for goto file...
 set path+=**
