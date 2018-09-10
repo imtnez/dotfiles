@@ -1,62 +1,47 @@
-filetype off
 
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
 
+" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'                 " git
-Plugin 'vim-airline/vim-airline'            " theme
-Plugin 'vim-airline/vim-airline-themes'     " theme
-" Plugin 'Valloric/YouCompleteMe'             " autocomplete
-Plugin 'scrooloose/nerdtree'                " file tree explorer
 
-" Bundle 'gmarik/vundle'
-" Plugin 'powerline/powerline'
-" Bundle 'a.vim'
-" Bundle 'wincent/Command-T'
-" Bundle 'DoxygenToolkit.vim'
-" Bundle 'godlygeek/tabular'
-" Bundle 'tpope/vim-sensible'
-" Bundle 'tpope/vim-unimpaired'
-" Bundle 'tpope/vim-endwise'
-" Bundle 'jeffkreeftmeijer/vim-numbertoggle'
-" Bundle 'Lokaltog/vim-easymotion'
-" Plugin 'morhetz/gruvbox'
-" Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Bundle 'Mizuchi/STL-Syntax'
-" Bundle 'tomtom/tcomment_vim'
-" Bundle 'majutsushi/tagbar'
-" Bundle 'julialang/julia-vim'
-" Bundle 'SirVer/ultisnips'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
-call vundle#end()
-filetype plugin indent on
+Plugin 'scrooloose/nerdtree'
 
-" //////////////// Visual ////////////////
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+let g:Powerline_symbols = 'fancy'
 
 syntax on
-hi LineNr ctermfg=240
-let g:Powerline_symbols = 'fancy'
-set number
-set noerrorbells visualbell t_vb=
-
-let mapleader = 'º'
-set mouse=a
+let mapleader = ','
+:set mouse=a
 set nowrap
 set expandtab
-
+"set number
 set tabstop=3
 set shiftwidth=3
+set visualbell
+set noerrorbells
 
-let g:ycm_confirm_extra_conf = 0
-
-noremap <Leader>t :NERDTreeToggle<CR>
-
-" //////////// Windows ////////////////
-
-noremap tt :tab split<CR>
-
-" //////////// Search //////////////////
-
-" nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
-set hlsearch
+map <Leader>t :NERDTreeToggle<CR>
