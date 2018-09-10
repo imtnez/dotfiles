@@ -1,6 +1,4 @@
-export ZSH="$ZDOTDIR/.oh-my-zsh"
-
-source "$ADOTDIR/.antigen.zsh"
+. "$ADOTDIR/.antigen.zsh"
 
 antigen use oh-my-zsh
 
@@ -17,15 +15,41 @@ antigen bundle sindresorhus/pure
 antigen apply
 
 typeset -gaU path
+path=("." $path)
+path=("$HOME/.local/sbin" $path)
 path=("$HOME/.local/bin" $path)
+
+alias .=source
+alias vim=nvim
 
 [ -x ~/.profile-priv ] && . ~/.profile-priv
 
-#plugins=(
-#  git
-#)
-#
-#source $ZSH/oh-my-zsh.sh
+######### PROMPT ######### 
+
+# Dir: current working directory
+prompt_dir() {
+   prompt_segment 14 black '%~'
+}
+
+prompt_context() {
+  DEFAULT_USER=wlpfo
+
+  if [[ "$USER" != "$DEFAULT_USER" ]]; then
+    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+  fi
+}
+
+######### TMUX ######### 
+
+if [[ -z "$TMUX" && -o interactive ]]
+then
+    if tmux has-session 2>/dev/null
+    then
+        exec tmux attach
+    else
+        exec tmux
+    fi
+fi
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
