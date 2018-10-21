@@ -23,7 +23,7 @@ path=("$HOME/.local/go/bin" $path)
 alias .=source
 alias vim=nvim
 
-[ -x ~/.profile-priv ] && . ~/.profile-priv
+[ -f ~/.profile-priv ] && . ~/.profile-priv
 
 ######### PROMPT ######### 
 
