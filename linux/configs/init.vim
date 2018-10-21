@@ -112,6 +112,7 @@ set completeopt=menuone,menu,longest,preview
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+let g:ctrlp_cache_dir = $HOME.'/.local/.cache/ctrlp'
 
 " The Silver Searcher
 if executable('ag')
