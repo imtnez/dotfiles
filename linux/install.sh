@@ -10,7 +10,7 @@ slinks=(
 "$script_dir/binaries/mosh-server-*:$HOME/.local/bin/mosh-server"
 "$script_dir/configs/tmux.conf:$HOME/.tmux.conf"
 "$script_dir/configs/init.vim:$HOME/.vimrc"
-"$script_dir/configs/init.vim:$HOME/.config/nvim/init.vim"
+"$script_dir/configs/init.vim:$HOME/.local/nvim/init.vim"
 )
 
 opt_zsh=(
