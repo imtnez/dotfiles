@@ -128,7 +128,7 @@ endif
 
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-noremap <Leader>t :NERDTreeToggle<CR>
+noremap <Leader>q :NERDTreeToggle<CR>
 
 " Buffers - explore/next/previous: Alt-F12, F12, Shift-F12.
 nnoremap <silent> <Leader><F1> :BufExplorer<CR>
@@ -137,7 +137,16 @@ nnoremap <silent> <F1> :bp<CR>
 
 " //////////// Windows ////////////////
 
-noremap tt :tab split<CR>
+map tt :tabnew<CR>
+map tc :tabclose<CR>
+map tn :tabnext<CR>
+map tp :tabprevious<CR>
+map tf :tabfirst<CR>
+map tl :tablast<CR>
+map tm :tabmove
+map ' `
+
+set scrolloff=3
 
 " //////////// Search //////////////////
 
