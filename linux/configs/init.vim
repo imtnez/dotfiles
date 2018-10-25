@@ -20,10 +20,11 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-repeat'
 Plugin 'jlanzarotta/bufexplorer'
 
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'junegunn/fzf.vim'
+
 "Plugin 'kendling/taghighlight'
 "Plugin 'abudden/EasyColour'
-
-Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " Bundle 'gmarik/vundle'
 " Bundle 'a.vim'
@@ -123,6 +124,6 @@ set scrolloff=3
 set hlsearch
 
 " path directory for goto file...
-set path+=**
+"set path+=**
 set completeopt=longest,menuone
 
