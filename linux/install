@@ -4,8 +4,10 @@ script_path=`realpath "$0"`
 script_dir=`dirname "$script_path"`
 
 slinks=(
-"$script_dir/binaries/tmux-*:$HOME/.local/bin/tmux"
-"$script_dir/binaries/nvim-*:$HOME/.local/bin/nvim"
+"$script_dir/binaries/tmux_*:$HOME/.local/bin/tmux"
+"$script_dir/binaries/nvim_*:$HOME/.local/bin/nvim"
+"$script_dir/binaries/fzf_*:$HOME/.local/bin/fzf"
+"$script_dir/binaries/fzf-tmux_*:$HOME/.local/bin/fzf-tmux"
 "$script_dir/configs/tmux.conf:$HOME/.tmux.conf"
 "$script_dir/configs/init.vim:$HOME/.vimrc"
 "$script_dir/configs/init.vim:$HOME/.local/nvim/init.vim"
@@ -59,19 +61,28 @@ make_links() {
       [ -e "$to_path" ] && echo -e "$red(should be removed first)$nor" && continue
 
       mkdir -p "$(dirname $to_path)"
-      ln -s "$from_path" "$to_path"
+      ln -nfs "$from_path" "$to_path"
       echo -e "${grn}DONE${nor}"
    done
 }
 
 config_zsh() {
    type zsh >/dev/null 2>&1 && return
-
+   
    echo ""
    echo "${yel}Wanna install ZSH?$nor"
    echo "   sudo apt install zsh && \\"
    echo "   git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.local/.oh-my-zsh && \\"
    echo "   chsh -s \$(which zsh)"
+   echo ""
+}
+
+config_fzf() {
+   [ ! -d "~/.local/.fzf" ] && return
+
+   echo ""
+   echo "${yel}Wanna install fzf?$nor"
+   echo "   git clone --depth=1 https://github.com/junegunn/fzf.git ~/.local/.fzf"
    echo ""
 }
 
@@ -103,3 +114,4 @@ done
 prepare_colors
 make_links
 [ $zsh ] && config_zsh
+config_fzf
