@@ -14,7 +14,7 @@ Plugin 'fatih/vim-go'                       " Go support
 Plugin 'scrooloose/nerdtree'                " file tree explorer
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'             " git diff before line numbers
-Plugin 'ervandew/supertab'
+"Plugin 'ervandew/supertab'
 Plugin 'gcmt/taboo.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-repeat'

@@ -78,7 +78,7 @@ config_zsh() {
 }
 
 config_fzf() {
-   [ ! -d "~/.local/.fzf" ] && return
+   [ -d "~/.local/.fzf" ] && return
 
    echo ""
    echo "${yel}Wanna install fzf?$nor"
