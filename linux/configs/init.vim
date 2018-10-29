@@ -127,3 +127,5 @@ set hlsearch
 "set path+=**
 set completeopt=longest,menuone
 
+vmap <Tab> >gv
+vmap <S-Tab> <gv
