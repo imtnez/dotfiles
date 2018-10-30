@@ -117,6 +117,7 @@ map tm :tabmove
 map ' `
 
 set scrolloff=3
+set list
 
 " //////////// Search //////////////////
 
