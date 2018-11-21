@@ -1,5 +1,4 @@
 alias .=source
-alias vim=nvim
 
 . "$ADOTDIR/.antigen.zsh"
 
@@ -56,3 +55,7 @@ prompt_context() {
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+alias vim=nvim
+alias glg='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+
