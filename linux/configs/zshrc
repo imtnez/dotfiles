@@ -1,6 +1,7 @@
 alias .=source
 
 . "$ADOTDIR/.antigen.zsh"
+. "$ADOTDIR/.z/z.sh"
 
 antigen use oh-my-zsh
 

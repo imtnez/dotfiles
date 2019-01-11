@@ -4,24 +4,27 @@ script_path=`realpath "$0"`
 script_dir=`dirname "$script_path"`
 
 slinks=(
-"$script_dir/binaries/tmux_*:$HOME/.local/bin/tmux"
-"$script_dir/binaries/nvim_*:$HOME/.local/bin/nvim"
-"$script_dir/binaries/fzf_*:$HOME/.local/bin/fzf"
-"$script_dir/binaries/fzf-tmux_*:$HOME/.local/bin/fzf-tmux"
-"$script_dir/configs/tmux.conf:$HOME/.tmux.conf"
-"$script_dir/configs/init.vim:$HOME/.vimrc"
-"$script_dir/configs/init.vim:$HOME/.local/nvim/init.vim"
-)
-
-opt_zsh=(
+   "$script_dir/binaries/tmux_*:$HOME/.local/bin/tmux"
+   "$script_dir/binaries/nvim_*:$HOME/.local/bin/nvim"
+   "$script_dir/binaries/fzf_*:$HOME/.local/bin/fzf"
+   "$script_dir/binaries/fzf-tmux_*:$HOME/.local/bin/fzf-tmux"
+   "$script_dir/configs/tmux.conf:$HOME/.tmux.conf"
+   "$script_dir/configs/init.vim:$HOME/.vimrc"
+   "$script_dir/configs/init.vim:$HOME/.local/nvim/init.vim"
    "$script_dir/configs/zshrc:$HOME/.local/.zshrc"
    "$script_dir/configs/antigen.zsh:$HOME/.local/.antigen.zsh"
    "$script_dir/configs/zshenv:$HOME/.zshenv"
 )
 
+clones=(
+   "Vundle.vim:github.com/VundleVim/Vundle.vim:$HOME/.local/.vim/bundle/Vundle.vim"
+   "fzf:github.com/junegunn/fzf"
+   "z:github.com/rupa/z"
+)
+
 split() {
-   IFS=$'\n' read -d "" -ra arr <<< "${1//$2/$'\n'}"
-   printf '%s\n' "${arr[@]}"
+   IFS=$'\n' read -d "" -ra ARR <<< "${1//$2/$'\n'}"
+   printf '%s\n' "${ARR[@]}"
 }
 
 prepare_colors() {
@@ -46,64 +49,56 @@ prepare_colors() {
 
 make_links() {
    for elem in "${slinks[@]}"; do
-      arr=($(split "$elem" ":"))
+      ARR=($(split "$elem" ":"))
 
-      from_path=${arr[0]}
-      to_path=${arr[1]}
+      FROM_PATH=${ARR[0]}
+      TO_PATH=${ARR[1]}
 
-      [ ! -e "$from_path" ] && echo -e "$from_path $red(not exists)$nor" && continue
+      [ ! -e "$FROM_PATH" ] && echo -e "$FROM_PATH $red(not exists)$nor" && continue
 
-      [ $force ] && rm -i "$to_path"
+      [ $force ] && rm -i "$TO_PATH"
 
-      printf '%s ' "$to_path"
+      printf '%s ' "$TO_PATH"
 
-      [ -L "$to_path" ] && echo -e "$grn(already done)$nor" && continue
-      [ -e "$to_path" ] && echo -e "$red(should be removed first)$nor" && continue
+      [ -L "$TO_PATH" ] && echo -e "$grn(already done)$nor" && continue
+      [ -e "$TO_PATH" ] && echo -e "$red(should be removed first)$nor" && continue
 
-      mkdir -p "$(dirname $to_path)"
-      ln -nfs "$from_path" "$to_path"
+      mkdir -p "$(dirname $TO_PATH)"
+      ln -nfs "$FROM_PATH" "$TO_PATH"
       echo -e "${grn}DONE${nor}"
    done
 }
 
-config_zsh() {
-   type zsh >/dev/null 2>&1 && return
-   
-   echo ""
-   echo "${yel}Wanna install ZSH?$nor"
-   echo "   sudo apt install zsh && \\"
-   echo "   git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git ~/.local/.oh-my-zsh && \\"
-   echo "   chsh -s \$(which zsh)"
-   echo ""
-}
+make_clones() {
+   for elem in "${clones[@]}"; do
+      ARR=($(split "$elem" ":"))
 
-config_fzf() {
-   [ -d "~/.local/.fzf" ] && return
+      NAME="${ARR[0]}"
+      REPO="${ARR[1]}"
+      DEST="${ARR[2]:-$HOME/.local/.$NAME}"
 
-   echo ""
-   echo "${yel}Wanna install fzf?$nor"
-   echo "   git clone --depth=1 https://github.com/junegunn/fzf.git ~/.local/.fzf"
-   echo ""
+      [ $force ] && rm -irf "$DEST"
+
+      [ -e "$DEST" ] && echo -e "${grn}$NAME already installed$nor" && continue
+
+      echo "${yel}Installing \"$NAME\"...$nor"
+      git clone --depth=1 https://$REPO $DEST
+      echo -e "${grn}DONE${nor}"
+   done
 }
 
 force=
-zsh=
-usage(){ 
+usage(){
    echo "Usage: $0 [-fzh]"
    echo "  -f force install. Replace existing files"
-   echo "  -z install also zsh"
    echo "  -h show this text"
    exit 1
 }
 
-while getopts "fhz" opt; do
+while getopts "fh" opt; do
    case "$opt" in
       f) 
          force=1
-         ;;
-      z)
-         zsh=1
-         slinks=( "${slinks[@]}" "${opt_zsh[@]}" )
          ;;
       h | *) 
          usage
@@ -113,5 +108,4 @@ done
 
 prepare_colors
 make_links
-[ $zsh ] && config_zsh
-config_fzf
+make_clones
