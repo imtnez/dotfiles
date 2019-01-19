@@ -5,6 +5,7 @@ script_dir=`dirname "$script_path"`
 
 slinks=(
 "$script_dir/configs/minttyrc:$HOME/.minttyrc"
+"$script_dir/configs/gitconfig:$HOME/.gitconfig"
 )
 
 split() {
