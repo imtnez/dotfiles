@@ -51,19 +51,19 @@ filetype plugin indent on
 
 let g:airline_theme='light'
 let g:airline_powerline_fonts = 1
-hi DiffAdd      ctermbg=150       ctermfg=0
-hi DiffDelete   ctermbg=242       ctermfg=0
-hi DiffChange   ctermbg=6         ctermfg=0
-hi DiffText     ctermbg=224       ctermfg=0
-
-hi Visual       ctermbg=254                         cterm=none
-hi VertSplit    ctermbg=Black     ctermfg=White
-hi CursorLine                                       cterm=none
-hi LineNr       ctermbg=255       ctermfg=240
-
-hi TabLineFill  ctermbg=DarkGreen ctermfg=LightCyan
-hi TabLine      ctermbg=LightCyan ctermfg=DarkGrey  cterm=none
-hi TabLineSel   ctermbg=LightBlue ctermfg=Black     cterm=none
+"hi DiffAdd      ctermbg=150       ctermfg=0
+"hi DiffDelete   ctermbg=242       ctermfg=0
+"hi DiffChange   ctermbg=6         ctermfg=0
+"hi DiffText     ctermbg=224       ctermfg=0
+"
+"hi Visual       ctermbg=254                         cterm=none
+"hi VertSplit    ctermbg=Black     ctermfg=White
+"hi CursorLine                                       cterm=none
+"hi LineNr       ctermbg=255       ctermfg=240
+"
+"hi TabLineFill  ctermbg=DarkGreen ctermfg=LightCyan
+"hi TabLine      ctermbg=LightCyan ctermfg=DarkGrey  cterm=none
+"hi TabLineSel   ctermbg=LightBlue ctermfg=Black     cterm=none
 
 set ignorecase
 set noshowmode
@@ -74,7 +74,7 @@ syntax sync minlines=256
 set fillchars=vert:\│
 
 syntax on
-set number
+"set number
 set noerrorbells visualbell t_vb=
 
 let mapleader = 'º'
@@ -99,6 +99,7 @@ let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 noremap <Leader>q :NERDTreeToggle<CR>
+noremap <Leader>f :NERDTreeFind<CR>
 
 " Buffers - explore/next/previous: Alt-F12, F12, Shift-F12.
 nnoremap <silent> <Leader><F1> :BufExplorer<CR>
