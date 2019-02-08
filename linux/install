@@ -4,7 +4,7 @@ script_path=`realpath "$0"`
 script_dir=`dirname "$script_path"`
 
 slinks=(
-   "$script_dir/binaries/tmux_*:$HOME/.local/bin/tmux"
+#   "$script_dir/binaries/tmux_*:$HOME/.local/bin/tmux"
    "$script_dir/binaries/nvim_*:$HOME/.local/bin/nvim"
    "$script_dir/binaries/fzf_*:$HOME/.local/bin/fzf"
    "$script_dir/binaries/fzf-tmux_*:$HOME/.local/bin/fzf-tmux"
