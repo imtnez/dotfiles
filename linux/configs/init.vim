@@ -49,13 +49,15 @@ filetype plugin indent on
 
 " //////////////// Visual ////////////////
 
-let g:airline_theme='light'
+let g:airline_theme='simple'
 let g:airline_powerline_fonts = 1
-"hi DiffAdd      ctermbg=150       ctermfg=0
-"hi DiffDelete   ctermbg=242       ctermfg=0
-"hi DiffChange   ctermbg=6         ctermfg=0
-"hi DiffText     ctermbg=224       ctermfg=0
-"
+colorscheme desert
+
+hi DiffAdd      ctermbg=150       ctermfg=0
+hi DiffDelete   ctermbg=242       ctermfg=0
+hi DiffChange   ctermbg=6         ctermfg=0
+hi DiffText     ctermbg=224       ctermfg=0
+
 "hi Visual       ctermbg=254                         cterm=none
 "hi VertSplit    ctermbg=Black     ctermfg=White
 "hi CursorLine                                       cterm=none
@@ -131,3 +133,6 @@ set completeopt=longest,menuone
 
 vmap <Tab> >gv
 vmap <S-Tab> <gv
+
+hi MatchParen   ctermbg=NONE      ctermfg=1 cterm=bold
+
