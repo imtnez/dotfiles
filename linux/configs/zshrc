@@ -61,3 +61,4 @@ alias vim=nvim
 alias ls='ls --group-directories-first --color=tty'
 alias glg='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240"

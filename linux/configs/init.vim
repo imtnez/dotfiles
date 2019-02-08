@@ -53,10 +53,10 @@ let g:airline_theme='simple'
 let g:airline_powerline_fonts = 1
 colorscheme desert
 
-hi DiffAdd      ctermbg=150       ctermfg=0
-hi DiffDelete   ctermbg=242       ctermfg=0
-hi DiffChange   ctermbg=6         ctermfg=0
-hi DiffText     ctermbg=224       ctermfg=0
+"hi DiffAdd      ctermbg=150       ctermfg=0
+"hi DiffDelete   ctermbg=242       ctermfg=0
+"hi DiffChange   ctermbg=6         ctermfg=0
+"hi DiffText     ctermbg=224       ctermfg=0
 
 "hi Visual       ctermbg=254                         cterm=none
 "hi VertSplit    ctermbg=Black     ctermfg=White
@@ -120,7 +120,7 @@ map tm :tabmove
 map ' `
 
 set scrolloff=3
-set list
+set nolist
 
 " //////////// Search //////////////////
 
