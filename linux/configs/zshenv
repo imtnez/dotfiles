@@ -12,3 +12,5 @@ export TERM=screen-256color
 export ZSH="$ZDOTDIR/.oh-my-zsh"
 export XDG_CONFIG_HOME="$ZDOTDIR"
 export _Z_DATA="$ZDOTDIR/.z.db"
+
+[ -f ~/.env ] && . ~/.env
