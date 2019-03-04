@@ -103,6 +103,12 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 noremap <Leader>q :NERDTreeToggle<CR>
 noremap <Leader>f :NERDTreeFind<CR>
 
+
+" Easy deletes
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
+
 " Buffers - explore/next/previous: Alt-F12, F12, Shift-F12.
 nnoremap <silent> <Leader><F1> :BufExplorer<CR>
 nnoremap <silent> <F2> :bn<CR>
