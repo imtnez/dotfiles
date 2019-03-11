@@ -15,3 +15,7 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 [ -f ~/.env ] && . ~/.env
+
+mosh_get_connection_details() {
+   MOSH_SERVER_NETWORK_TMOUT=86400 mosh-server 2>&1 | grep CONNECT | awk '{ print $3 " " $4 }'
+}
