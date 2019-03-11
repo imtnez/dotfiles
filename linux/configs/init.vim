@@ -7,8 +7,8 @@ call vundle#begin('~/.local/.vim/bundle')
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-fugitive'                 " git
-Plugin 'vim-airline/vim-airline'            " theme
-Plugin 'vim-airline/vim-airline-themes'     " theme
+" Plugin 'vim-airline/vim-airline'            " theme
+" Plugin 'vim-airline/vim-airline-themes'     " theme
 
 Plugin 'fatih/vim-go'                       " Go support
 Plugin 'scrooloose/nerdtree'                " file tree explorer
@@ -49,8 +49,8 @@ filetype plugin indent on
 
 " //////////////// Visual ////////////////
 
-let g:airline_theme='simple'
-let g:airline_powerline_fonts = 1
+" let g:airline_theme='deus'
+" let g:airline_powerline_fonts = 1
 " colorscheme desert
 
 "hi DiffAdd      ctermbg=150       ctermfg=0
@@ -68,6 +68,9 @@ hi VertSplit    cterm=NONE ctermfg=236 ctermbg=NONE
 "hi TabLineFill  ctermbg=DarkGreen ctermfg=LightCyan
 "hi TabLine      ctermbg=LightCyan ctermfg=DarkGrey  cterm=none
 "hi TabLineSel   ctermbg=LightBlue ctermfg=Black     cterm=none
+
+hi! StatusLine ctermbg=004 ctermfg=235
+hi! StatusLineNC ctermbg=240 ctermfg=235
 
 set ignorecase
 set noshowmode
