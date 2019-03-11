@@ -145,4 +145,12 @@ set completeopt=longest,menuone
 vmap <Tab> >gv
 vmap <S-Tab> <gv
 
+function! SwitchSourceHeader()
+  if (expand ("%:e") == "cpp")
+    exe ":e %<.h"
+  else
+    exe ":e %<.cpp"
+  endif
+endfunction
 
+nmap <leader>s :call SwitchSourceHeader()<CR>
