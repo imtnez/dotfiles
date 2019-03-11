@@ -8,7 +8,6 @@ ZSH_HIGHLIGHT_STYLES[path]='none'
 ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green'
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
 
-export TERM=xterm-256color
 export ZSH="$ZDOTDIR/.oh-my-zsh"
 export XDG_CONFIG_HOME="$ZDOTDIR"
 export _Z_DATA="$ZDOTDIR/.z.db"
