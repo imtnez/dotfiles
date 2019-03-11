@@ -13,8 +13,8 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-autosuggestions
 
 antigen bundle mafredri/zsh-async
-antigen bundle sindresorhus/pure
-#antigen theme agnoster
+#antigen bundle sindresorhus/pure
+antigen theme jreese
 antigen apply
 
 typeset -gaU path
@@ -30,17 +30,17 @@ path=("$HOME/.local/go/bin" $path)
 ######### PROMPT ######### 
 
 # Dir: current working directory
-prompt_dir() {
-   prompt_segment 14 black '%~'
-}
-
-prompt_context() {
-  DEFAULT_USER=wlpfo
-
-  if [[ "$USER" != "$DEFAULT_USER" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
-  fi
-}
+#prompt_dir() {
+#   prompt_segment 14 black '%~'
+#}
+#
+#prompt_context() {
+#  DEFAULT_USER=wlpfo
+#
+#  if [[ "$USER" != "$DEFAULT_USER" ]]; then
+#    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+#  fi
+#}
 
 ######### TMUX ######### 
 
