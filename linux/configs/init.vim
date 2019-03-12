@@ -69,8 +69,8 @@ hi VertSplit    cterm=NONE ctermfg=236 ctermbg=NONE
 "hi TabLine      ctermbg=LightCyan ctermfg=DarkGrey  cterm=none
 "hi TabLineSel   ctermbg=LightBlue ctermfg=Black     cterm=none
 
-hi! StatusLine ctermbg=004 ctermfg=236
-hi! StatusLineNC ctermbg=240 ctermfg=236
+hi! StatusLine    ctermbg=236    ctermfg=255    cterm=none
+hi! StatusLineNC  ctermbg=236    ctermfg=242    cterm=none
 
 set ignorecase
 set noshowmode
