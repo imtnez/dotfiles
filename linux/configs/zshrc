@@ -14,7 +14,7 @@ antigen bundle zsh-users/zsh-autosuggestions
 
 antigen bundle mafredri/zsh-async
 #antigen bundle sindresorhus/pure
-antigen theme jreese
+antigen theme agnoster
 antigen apply
 
 typeset -gaU path
@@ -28,6 +28,10 @@ path=("$HOME/.local/go/bin" $path)
 . "$HOME/.local/.fzf/shell/key-bindings.zsh"
 
 ######### PROMPT ######### 
+
+prompt_dir() {
+   prompt_segment 14 $CURRENT_FG '%~'
+}
 
 # Dir: current working directory
 #prompt_dir() {
