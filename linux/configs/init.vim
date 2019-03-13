@@ -73,7 +73,7 @@ hi! StatusLine    ctermbg=236    ctermfg=255    cterm=none
 hi! StatusLineNC  ctermbg=236    ctermfg=242    cterm=none
 
 set ignorecase
-set noshowmode
+" set noshowmode
 set nocursorcolumn
 set nocursorline
 set norelativenumber
