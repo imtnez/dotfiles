@@ -84,7 +84,6 @@ syntax on
 "set number
 set noerrorbells visualbell t_vb=
 
-let mapleader = 'º'
 set mouse=a
 set nowrap
 
@@ -97,7 +96,7 @@ set directory=$HOME/.local/.vim/swapfiles
 
 " directory for parsed tags
 set tags+=~/.local/.vim/tags/cpp
-set tags+=/sources/git/wlp-fo/.git/tags
+set tags+=/sources/wlpfo/.tags
 
 map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
