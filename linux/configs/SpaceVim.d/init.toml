@@ -23,12 +23,17 @@
     buffer_index_type = 4
     enable_tabline_filetype_icon = true
     enable_statusline_mode = false
+    bootstrap_before = "myspacevim#before"
+    bootstrap_after = "myspacevim#after"
 
 # Enable autocomplete layer
 [[layers]]
 name = 'autocomplete'
-#auto-completion-return-key-behavior = "complete"
-#auto-completion-tab-key-behavior = "smart"
+auto-completion-return-key-behavior = "nil"
+auto-completion-tab-key-behavior = "nil"
+
+[[layers]]
+name = "git"
 
 [[layers]]
 name = 'fzf'
@@ -38,6 +43,9 @@ name = "VersionControl"
 
 [[layers]]
 name = "tags"
+
+[[layers]]
+name = "tmux"
 
 [[layers]]
 name = "lang#c"
