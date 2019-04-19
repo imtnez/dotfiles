@@ -22,9 +22,11 @@ path=("." $path)
 path=("$HOME/.local/sbin" $path)
 path=("$HOME/.local/bin" $path)
 path=("$HOME/.local/go/bin" $path)
+path=("$HOME/.local/.fzf/bin" $path)
 
 [ -f $SOURCES_PATH/wlpfo/.profile-host ] && . $SOURCES_PATH/wlpfo/.profile-host
-[[ $- == *i* ]] && . "$HOME/.local/.fzf/shell/completion.zsh" 2> /dev/null
+
+. "$HOME/.local/.fzf/shell/completion.zsh"
 . "$HOME/.local/.fzf/shell/key-bindings.zsh"
 
 ######### PROMPT ######### 

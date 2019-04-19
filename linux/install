@@ -1,69 +1,58 @@
 #!/bin/bash
 
-script_path=`realpath "$0"`
-script_dir=`dirname "$script_path"`
+force="$FORCE_INSTALL"
+script_dir="$HOME/.universals/linux"
 
-slinks=(
-#   "$script_dir/binaries/tmux_*:$HOME/.local/bin/tmux"
-   "$script_dir/binaries/nvim_*:$HOME/.local/bin/nvim"
-   "$script_dir/binaries/fzf_*:$HOME/.local/bin/fzf"
-   "$script_dir/binaries/fzf-tmux_*:$HOME/.local/bin/fzf-tmux"
-   "$script_dir/configs/tmux.conf:$HOME/.tmux.conf"
-   "$script_dir/configs/init.vim:$HOME/.vimrc"
-   "$script_dir/configs/init.vim:$HOME/.local/nvim/init.vim"
-   "$script_dir/configs/zshrc:$HOME/.local/.zshrc"
-   "$script_dir/configs/antigen.zsh:$HOME/.local/.antigen.zsh"
-   "$script_dir/configs/zshenv:$HOME/.zshenv"
+downloads=(
+   "https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy;$HOME/.local/bin/diff-so-fancy"
+   "https://github.com/neovim/neovim/releases/download/v0.3.4/nvim.appimage;$HOME/.local/bin/nvim"
 )
 
 clones=(
-   "Vundle.vim:github.com/VundleVim/Vundle.vim:$HOME/.local/.vim/bundle/Vundle.vim"
-   "fzf:github.com/junegunn/fzf"
-   "z:github.com/rupa/z"
+   "SpaceVim;github.com/SpaceVim/SpaceVim"
+   "fzf;github.com/junegunn/fzf"
+   "z;github.com/rupa/z"
 )
 
-split() {
-   IFS=$'\n' read -d "" -ra ARR <<< "${1//$2/$'\n'}"
-   printf '%s\n' "${ARR[@]}"
-}
+commands=(
+   "$HOME/.local/.fzf/install --bin"
+   "chmod u+x $HOME/.local/bin/*"
+   "git config --global core.pager 'diff-so-fancy | less --tabs=4 -RFX'"
+)
 
-prepare_colors() {
-   if which tput >/dev/null 2>&1; then
-      ncolors=$(tput colors)
-   fi
+links=(
+   "$script_dir/configs/tmux.conf;$HOME/.tmux.conf"
+   "$script_dir/configs/zshrc;$HOME/.local/.zshrc"
+   "$script_dir/configs/antigen.zsh;$HOME/.local/.antigen.zsh"
+   "$script_dir/configs/zshenv;$HOME/.zshenv"
+   "$script_dir/configs/SpaceVim.d;$HOME/.SpaceVim.d"
+   "$HOME/.local/.SpaceVim;$HOME/.vim"
+   "$HOME/.local/.SpaceVim;$HOME/.local/nvim"
+)
 
-   if [ -t 1 ] && [ -n "$ncolors" ] && [ "$ncolors" -ge 8 ]; then
-      nor="$(tput sgr0)"
-      red="$(tput setaf 1)"
-      grn="$(tput setaf 2)"
-      yel="$(tput setaf 3)"
-      blu="$(tput setaf 4)"
-   else
-      nor=""
-      red=""
-      grn=""
-      yel=""
-      blu=""
-   fi
-}
+nor=$'\e[0m'
+red=$'\e[31m'
+grn=$'\e[32m'
+yel=$'\e[33m'
+blu=$'\e[34m'
 
 make_links() {
-   for elem in "${slinks[@]}"; do
-      ARR=($(split "$elem" ":"))
+   for elem in "${links[@]}"; do
+      elem="${elem//;/$'\n'''}"
+      readarray -t arr <<<"$elem"
 
-      FROM_PATH=${ARR[0]}
-      TO_PATH=${ARR[1]}
+      FROM_PATH="${arr[0]}"
+      TO_PATH="${arr[1]}"
 
-      [ ! -e "$FROM_PATH" ] && echo -e "$FROM_PATH $red(not exists)$nor" && continue
-
-      [ $force ] && rm -i "$TO_PATH"
+      [[ ! -e "$FROM_PATH" ]] && echo -e "$FROM_PATH $red(not exists)$nor" && continue
+      [[ -z "$force" ]] || rm -i "$TO_PATH"
 
       printf '%s ' "$TO_PATH"
 
-      [ -L "$TO_PATH" ] && echo -e "$grn(already done)$nor" && continue
-      [ -e "$TO_PATH" ] && echo -e "$red(should be removed first)$nor" && continue
+      [[ -L "$TO_PATH" ]] && echo -e "$grn(already done)$nor" && continue
+      [[ -e "$TO_PATH" ]] && echo -e "$red(should be removed first)$nor" && continue
 
-      mkdir -p "$(dirname $TO_PATH)"
+      mkdir -p "${TO_PATH%/*}"
       ln -nfs "$FROM_PATH" "$TO_PATH"
       echo -e "${grn}DONE${nor}"
    done
@@ -71,41 +60,47 @@ make_links() {
 
 make_clones() {
    for elem in "${clones[@]}"; do
-      ARR=($(split "$elem" ":"))
+      elem="${elem//;/$'\n'''}"
+      readarray -t arr <<<"$elem"
 
-      NAME="${ARR[0]}"
-      REPO="${ARR[1]}"
-      DEST="${ARR[2]:-$HOME/.local/.$NAME}"
+      NAME="${arr[0]}"
+      REPO="${arr[1]}"
+      DEST="${arr[2]:-$HOME/.local/.$NAME}"
 
-      [ $force ] && rm -irf "$DEST"
+      [[ -z "$force" ]] || rm -irf "$DEST"
 
-      [ -e "$DEST" ] && echo -e "${grn}$NAME already installed$nor" && continue
-
-      echo "${yel}Installing \"$NAME\"...$nor"
-      git clone --depth=1 https://$REPO $DEST
-      echo -e "${grn}DONE${nor}"
+      if [[ -e "$DEST" ]]; then
+         echo -e "$grn$NAME already installed. Pulling latest changes...$nor"
+         git -C $DEST pull
+      else
+         echo "${yel}Installing \"$NAME\"...$nor"
+         git clone --depth=1 https://$REPO $DEST
+         echo -e "${grn}DONE${nor}"
+      fi
    done
 }
 
-force=
-usage(){
-   echo "Usage: $0 [-fzh]"
-   echo "  -f force install. Replace existing files"
-   echo "  -h show this text"
-   exit 1
+exec_scripts() {
+   for elem in "${commands[@]}"; do
+      echo "${grn}Executing:$nor $elem"
+      eval "$elem"
+   done
 }
 
-while getopts "fh" opt; do
-   case "$opt" in
-      f) 
-         force=1
-         ;;
-      h | *) 
-         usage
-         ;;
-   esac
-done
+make_downloads() {
+   for elem in "${downloads[@]}"; do
+      elem="${elem//;/$'\n'''}"
+      readarray -t arr <<<"$elem"
+      
+      FROM="${arr[0]}"
+      DEST="${arr[1]}"
 
-prepare_colors
-make_links
+      echo "${grn}Downloading $FROM$nor"
+      wget -q --show-progress -O "$DEST" "$FROM"
+   done
+}
+
+make_downloads
 make_clones
+exec_scripts
+make_links
