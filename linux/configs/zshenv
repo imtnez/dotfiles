@@ -12,9 +12,9 @@ export SPACEVIMDIR="$ZDOTDIR/.SpaceVim.d/"
 export ZSH="$ZDOTDIR/.oh-my-zsh"
 export XDG_CONFIG_HOME="$ZDOTDIR"
 export _Z_DATA="$ZDOTDIR/.z.db"
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-export TERM="screen-256color"
+#export LANG="en_US.UTF-8"
+#export LC_ALL="en_US.UTF-8"
+#export TERM="screen-256color"
 export GTAGSLABEL="pygments"
 
 [ -f ~/.env ] && . ~/.env
