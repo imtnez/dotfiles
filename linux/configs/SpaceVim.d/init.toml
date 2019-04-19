@@ -37,6 +37,12 @@ name = 'fzf'
 name = "VersionControl"
 
 [[layers]]
+name = "tags"
+
+[[layers]]
+name = "lang#c"
+
+[[layers]]
 name = 'shell'
-default_position = 'top'
+default_position = 'bottom'
 default_height = 30
