@@ -25,7 +25,7 @@ links=(
    "$script_dir/configs/zshrc;$HOME/.local/.zshrc"
    "$script_dir/configs/antigen.zsh;$HOME/.local/.antigen.zsh"
    "$script_dir/configs/zshenv;$HOME/.zshenv"
-   "$script_dir/configs/SpaceVim.d;$HOME/.SpaceVim.d"
+   "$script_dir/configs/SpaceVim.d;$HOME/.local/.SpaceVim.d"
    "$HOME/.local/.SpaceVim;$HOME/.vim"
    "$HOME/.local/.SpaceVim;$HOME/.local/nvim"
 )
