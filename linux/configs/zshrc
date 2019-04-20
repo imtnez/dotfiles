@@ -48,21 +48,7 @@ prompt_dir() {
 #  fi
 #}
 
-######### TMUX ######### 
-
-#if [[ -z "$TMUX" && -o interactive ]]
-#then
-#    if tmux has-session 2>/dev/null
-#    then
-#        exec tmux attach
-#    else
-#        exec tmux
-#    fi
-#fi
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
+alias vim='nvim'
 alias ls='ls --group-directories-first --color=tty'
 alias glg='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 

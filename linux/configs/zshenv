@@ -7,6 +7,7 @@ typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]='none'
 ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green'
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=cyan'
 
 export SPACEVIMDIR="$ZDOTDIR/.SpaceVim.d/"
 export ZSH="$ZDOTDIR/.oh-my-zsh"

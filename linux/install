@@ -4,30 +4,24 @@ force="$FORCE_INSTALL"
 script_dir="$HOME/.universals/linux"
 
 downloads=(
-   "https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy;$HOME/.local/bin/diff-so-fancy"
-   "https://github.com/neovim/neovim/releases/download/v0.3.4/nvim.appimage;$HOME/.local/bin/nvim"
+  "https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy;$HOME/.local/bin/diff-so-fancy"
+  "https://github.com/neovim/neovim/releases/download/v0.3.4/nvim.appimage;$HOME/.local/bin/nvim"
 )
 
 clones=(
-   "SpaceVim;github.com/SpaceVim/SpaceVim"
-   "fzf;github.com/junegunn/fzf"
-   "z;github.com/rupa/z"
-)
-
-commands=(
-   "$HOME/.local/.fzf/install --bin"
-   "chmod u+x $HOME/.local/bin/*"
-   "git config --global core.pager 'diff-so-fancy | less --tabs=4 -RFX'"
+  "SpaceVim;github.com/SpaceVim/SpaceVim"
+  "fzf;github.com/junegunn/fzf"
+  "z;github.com/rupa/z"
 )
 
 links=(
-   "$script_dir/configs/tmux.conf;$HOME/.tmux.conf"
-   "$script_dir/configs/zshrc;$HOME/.local/.zshrc"
-   "$script_dir/configs/antigen.zsh;$HOME/.local/.antigen.zsh"
-   "$script_dir/configs/zshenv;$HOME/.zshenv"
-   "$script_dir/configs/SpaceVim.d;$HOME/.local/.SpaceVim.d"
-   "$HOME/.local/.SpaceVim;$HOME/.vim"
-   "$HOME/.local/.SpaceVim;$HOME/.local/nvim"
+  "$script_dir/configs/tmux.conf;$HOME/.tmux.conf"
+  "$script_dir/configs/zshrc;$HOME/.local/.zshrc"
+  "$script_dir/configs/antigen.zsh;$HOME/.local/.antigen.zsh"
+  "$script_dir/configs/zshenv;$HOME/.zshenv"
+  "$script_dir/configs/SpaceVim.d;$HOME/.local/.SpaceVim.d"
+  "$HOME/.local/.SpaceVim;$HOME/.vim"
+  "$HOME/.local/.SpaceVim;$HOME/.local/nvim"
 )
 
 nor=$'\e[0m'
@@ -37,67 +31,69 @@ yel=$'\e[33m'
 blu=$'\e[34m'
 
 make_links() {
-   for elem in "${links[@]}"; do
-      elem="${elem//;/$'\n'''}"
-      readarray -t arr <<<"$elem"
+  for elem in "${links[@]}"; do
+    elem="${elem//;/$'\n'''}"
+    readarray -t arr <<<"$elem"
 
-      FROM_PATH="${arr[0]}"
-      TO_PATH="${arr[1]}"
+    FROM_PATH="${arr[0]}"
+    TO_PATH="${arr[1]}"
 
-      [[ ! -e "$FROM_PATH" ]] && echo -e "$FROM_PATH $red(not exists)$nor" && continue
-      [[ -z "$force" ]] || rm -i "$TO_PATH"
+    [[ ! -e "$FROM_PATH" ]] && echo -e "$FROM_PATH $red(not exists)$nor" && continue
+    [[ -z "$force" ]] || rm -i "$TO_PATH"
 
-      printf '%s ' "$TO_PATH"
+    printf '%s ' "$TO_PATH"
 
-      [[ -L "$TO_PATH" ]] && echo -e "$grn(already done)$nor" && continue
-      [[ -e "$TO_PATH" ]] && echo -e "$red(should be removed first)$nor" && continue
+    [[ -L "$TO_PATH" ]] && echo -e "$grn(already done)$nor" && continue
+    [[ -e "$TO_PATH" ]] && echo -e "$red(should be removed first)$nor" && continue
 
-      mkdir -p "${TO_PATH%/*}"
-      ln -nfs "$FROM_PATH" "$TO_PATH"
-      echo -e "${grn}DONE${nor}"
-   done
+    mkdir -p "${TO_PATH%/*}"
+    ln -nfs "$FROM_PATH" "$TO_PATH"
+    echo -e "${grn}DONE${nor}"
+  done
 }
 
 make_clones() {
-   for elem in "${clones[@]}"; do
-      elem="${elem//;/$'\n'''}"
-      readarray -t arr <<<"$elem"
+  for elem in "${clones[@]}"; do
+    elem="${elem//;/$'\n'''}"
+    readarray -t arr <<<"$elem"
 
-      NAME="${arr[0]}"
-      REPO="${arr[1]}"
-      DEST="${arr[2]:-$HOME/.local/.$NAME}"
+    NAME="${arr[0]}"
+    REPO="${arr[1]}"
+    DEST="${arr[2]:-$HOME/.local/.$NAME}"
 
-      [[ -z "$force" ]] || rm -irf "$DEST"
+    [[ -z "$force" ]] || rm -irf "$DEST"
 
-      if [[ -e "$DEST" ]]; then
-         echo -e "$grn$NAME already installed. Pulling latest changes...$nor"
-         git -C $DEST pull
-      else
-         echo "${yel}Installing \"$NAME\"...$nor"
-         git clone --depth=1 https://$REPO $DEST
-         echo -e "${grn}DONE${nor}"
-      fi
-   done
+    if [[ -e "$DEST" ]]; then
+      echo -e "$grn$NAME already installed. Pulling latest changes...$nor"
+      git -C $DEST pull
+    else
+      echo "${yel}Installing \"$NAME\"...$nor"
+      git clone --depth=1 https://$REPO $DEST
+      echo -e "${grn}DONE${nor}"
+    fi
+  done
 }
 
 exec_scripts() {
-   for elem in "${commands[@]}"; do
-      echo "${grn}Executing:$nor $elem"
-      eval "$elem"
-   done
+  $HOME/.local/.fzf/install --bin
+  chmod u+x $HOME/.local/bin/*
+  git config --global core.pager 'diff-so-fancy | less --tabs=4 -RFX'
+  git config --global merge.tool vimdiff
+  git config --global diff.tool vimdiff
+  git config --global mergetool.vimdiff.cmd $'nvim -d $LOCAL $REMOTE $MERGED -c \'$wincmd w\' -c \'wincmd J\''
 }
 
 make_downloads() {
-   for elem in "${downloads[@]}"; do
-      elem="${elem//;/$'\n'''}"
-      readarray -t arr <<<"$elem"
-      
-      FROM="${arr[0]}"
-      DEST="${arr[1]}"
+  for elem in "${downloads[@]}"; do
+    elem="${elem//;/$'\n'''}"
+    readarray -t arr <<<"$elem"
 
-      echo "${grn}Downloading $FROM$nor"
-      wget -q --show-progress -O "$DEST" "$FROM"
-   done
+    FROM="${arr[0]}"
+    DEST="${arr[1]}"
+
+    echo "${grn}Downloading $FROM$nor"
+    wget -q --show-progress -O "$DEST" "$FROM"
+  done
 }
 
 make_downloads
