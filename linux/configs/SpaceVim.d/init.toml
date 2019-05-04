@@ -26,26 +26,37 @@
     bootstrap_before = "myspacevim#before"
     bootstrap_after = "myspacevim#after"
 
-# Enable autocomplete layer
+#[[custom_plugins]]
+#    name = "vim-scripts/Conque-GDB"
+#    merged = false
+
 [[layers]]
-name = 'autocomplete'
-auto-completion-return-key-behavior = "nil"
-auto-completion-tab-key-behavior = "nil"
+name = "tmux"
 
 [[layers]]
 name = "git"
 
 [[layers]]
-name = 'fzf'
+    name = 'autocomplete'
+    enable = false
 
-[[layers]]
-name = "VersionControl"
+# Enable autocomplete layer
+# [[layers]]
+# name = 'autocomplete'
+# auto-completion-return-key-behavior = "nil"
+# auto-completion-tab-key-behavior = "nil"
 
-[[layers]]
-name = "tags"
+# [[layers]]
+# name = 'fzf'
 
-[[layers]]
-name = "tmux"
+# [[layers]]
+# name = "VersionControl"
+
+#[[layers]]
+#name = "tags"
+
+# [[layers]]
+# name = "cscope"
 
 [[layers]]
 name = "lang#c"
