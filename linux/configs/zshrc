@@ -26,7 +26,7 @@ path=("$HOME/.local/.fzf/bin" $path)
 
 #[ -f $SOURCES_PATH/wlpfo/.profile-host ] && . $SOURCES_PATH/wlpfo/.profile-host
 KEEP_PROMPT=1
-[[ -f $HOME/wlpfo_scripts/profile ]] && . $HOME/wlpfo_scripts/profile
+[[ -f $HOME/.profile ]] && . $HOME/.profile
 
 . "$HOME/.local/.fzf/shell/completion.zsh"
 . "$HOME/.local/.fzf/shell/key-bindings.zsh"

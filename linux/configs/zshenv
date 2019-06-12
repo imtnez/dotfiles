@@ -19,6 +19,8 @@ export TERM="screen-256color"
 #export GTAGSLABEL="pygments"
 export GTAGSLABEL="new-ctags"
 
+export DOCKER4WL_ROOT=/sources
+
 # [ -f ~/.env ] && . ~/.env
 
 mosh_get_connection_details() {

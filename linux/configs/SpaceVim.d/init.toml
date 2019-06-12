@@ -30,6 +30,10 @@
 #    name = "vim-scripts/Conque-GDB"
 #    merged = false
 
+[[custom_plugins]]
+    name = "junegunn/fzf.vim"
+    merged = false
+
 [[layers]]
 name = "tmux"
 
@@ -46,8 +50,8 @@ name = "git"
 # auto-completion-return-key-behavior = "nil"
 # auto-completion-tab-key-behavior = "nil"
 
-# [[layers]]
-# name = 'fzf'
+[[layers]]
+name = 'fzf'
 
 # [[layers]]
 # name = "VersionControl"
