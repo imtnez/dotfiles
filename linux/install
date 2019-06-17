@@ -5,7 +5,7 @@ script_dir="$HOME/.universals/linux"
 
 downloads=(
   "https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy;$HOME/.local/bin/diff-so-fancy"
-  "https://github.com/neovim/neovim/releases/download/v0.3.4/nvim.appimage;$HOME/.local/bin/nvim"
+  "https://github.com/neovim/neovim/releases/download/v0.3.7/nvim.appimage;$HOME/.local/bin/nvim"
 )
 
 clones=(
