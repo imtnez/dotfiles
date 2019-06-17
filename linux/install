@@ -85,7 +85,7 @@ exec_scripts() {
 
 make_downloads() {
   for elem in "${downloads[@]}"; do
-    elem="${elem//;/$'\n'''}"
+    elem="${elem//;/$'\n'}"
     readarray -t arr <<<"$elem"
 
     FROM="${arr[0]}"
