@@ -92,7 +92,7 @@ make_downloads() {
     DEST="${arr[1]}"
 
     echo "${grn}Downloading $FROM$nor"
-    wget -q --show-progress -O "$DEST" "$FROM"
+    wget -q -O "$DEST" "$FROM"
   done
 }
 
