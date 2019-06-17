@@ -54,7 +54,7 @@ make_links() {
 
 make_clones() {
   for elem in "${clones[@]}"; do
-    elem="${elem//;/$'\n'''}"
+    elem="${elem//;/$'\n'}"
     readarray -t arr <<<"$elem"
 
     NAME="${arr[0]}"
