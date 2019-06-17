@@ -96,6 +96,8 @@ make_downloads() {
   done
 }
 
+mkdir -p $HOME/.local/bin
+
 make_downloads
 make_clones
 exec_scripts
