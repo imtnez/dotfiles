@@ -32,7 +32,7 @@ blu=$'\e[34m'
 
 make_links() {
   for elem in "${links[@]}"; do
-    elem="${elem//;/$'\n'''}"
+    elem="${elem//;/$'\n'}"
     readarray -t arr <<<"$elem"
 
     FROM_PATH="${arr[0]}"
