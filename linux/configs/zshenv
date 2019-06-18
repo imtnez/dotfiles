@@ -1,28 +1,7 @@
-ZDOTDIR="$HOME/.local"
-HISTFILE="$ZDOTDIR/.zsh_history"
+export XDG_CONFIG_HOME="$HOME/.local"
+export SPACEVIMDIR="$XDG_CONFIG_HOME/.SpaceVim.d/"
 
-ADOTDIR="$ZDOTDIR"
-
-typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[path]='none'
-ZSH_HIGHLIGHT_STYLES[suffix-alias]='fg=green'
-ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
-ZSH_HIGHLIGHT_STYLES[globbing]='fg=cyan'
-
-export SPACEVIMDIR="$ZDOTDIR/.SpaceVim.d/"
-export ZSH="$ZDOTDIR/.oh-my-zsh"
-export XDG_CONFIG_HOME="$ZDOTDIR"
-export _Z_DATA="$ZDOTDIR/.z.db"
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-export TERM="screen-256color"
-#export GTAGSLABEL="pygments"
-export GTAGSLABEL="new-ctags"
-
-export DOCKER4WL_ROOT=/sources
-
-# [ -f ~/.env ] && . ~/.env
-
-mosh_get_connection_details() {
-   MOSH_SERVER_NETWORK_TMOUT=86400 mosh-server 2>&1 | grep CONNECT | awk '{ print $3 " " $4 }'
-}
+HISTFILE="$XDG_CONFIG_HOME/.zsh_history"
+ADOTDIR="$XDG_CONFIG_HOME"
+ZDOTDIR="$XDG_CONFIG_HOME"
+ZSH="$XDG_CONFIG_HOME/.oh-my-zsh"
