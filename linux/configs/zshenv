@@ -1,6 +1,7 @@
 export XDG_CONFIG_HOME="$HOME/.local"
-export ZSH="$XDG_CONFIG_HOME/.oh-my-zsh"
+export SPACEVIMDIR="$XDG_CONFIG_HOME/.SpaceVim.d/"
 
 HISTFILE="$XDG_CONFIG_HOME/.zsh_history"
 ADOTDIR="$XDG_CONFIG_HOME"
 ZDOTDIR="$XDG_CONFIG_HOME"
+ZSH="$XDG_CONFIG_HOME/.oh-my-zsh"
