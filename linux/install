@@ -1,17 +1,15 @@
 #!/bin/bash
 
 force="$FORCE_INSTALL"
-script_dir="$HOME/.universals/linux"
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 downloads=(
   "https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy;$HOME/.local/bin/diff-so-fancy"
-  "https://github.com/neovim/neovim/releases/download/v0.3.7/nvim.appimage;$HOME/.local/bin/nvim"
 )
 
 clones=(
   "SpaceVim;github.com/SpaceVim/SpaceVim"
   "fzf;github.com/junegunn/fzf"
-  "z;github.com/rupa/z"
 )
 
 links=(
@@ -20,8 +18,9 @@ links=(
   "$script_dir/configs/antigen.zsh;$HOME/.local/.antigen.zsh"
   "$script_dir/configs/zshenv;$HOME/.zshenv"
   "$script_dir/configs/SpaceVim.d;$HOME/.local/.SpaceVim.d"
-  "$HOME/.local/.SpaceVim;$HOME/.vim"
   "$HOME/.local/.SpaceVim;$HOME/.local/nvim"
+  "$HOME/.local/fzf/bin/fzf;$HOME/.local/bin/fzf"
+  "$HOME/.local/fzf/bin/fzf-tmux;$HOME/.local/bin/fzf-tmux"
 )
 
 nor=$'\e[0m'
@@ -59,7 +58,7 @@ make_clones() {
 
     NAME="${arr[0]}"
     REPO="${arr[1]}"
-    DEST="${arr[2]:-$HOME/.local/.$NAME}"
+    DEST="${arr[2]:-$HOME/.local/$NAME}"
 
     [[ -z "$force" ]] || rm -irf "$DEST"
 
@@ -75,7 +74,7 @@ make_clones() {
 }
 
 exec_scripts() {
-  $HOME/.local/.fzf/install --bin
+  $HOME/.local/fzf/install --bin
   chmod u+x $HOME/.local/bin/*
   git config --global core.pager 'diff-so-fancy | less --tabs=4 -RFX'
   git config --global merge.tool vimdiff

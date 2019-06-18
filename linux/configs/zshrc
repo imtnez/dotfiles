@@ -1,7 +1,8 @@
 alias .=source
 
 . "$ADOTDIR/.antigen.zsh"
-. "$ADOTDIR/.z/z.sh"
+. "$HOME/.local/fzf/shell/completion.zsh"
+. "$HOME/.local/fzf/shell/key-bindings.zsh"
 
 antigen use oh-my-zsh
 
@@ -9,49 +10,15 @@ antigen bundle git
 antigen bundle gitfast
 antigen bundle git-extras
 
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
-
-antigen bundle mafredri/zsh-async
-#antigen bundle sindresorhus/pure
 antigen theme agnoster
 antigen apply
 
-typeset -gaU path
-path=("." $path)
-path=("$HOME/.local/sbin" $path)
-path=("$HOME/.local/bin" $path)
-path=("$HOME/.local/go/bin" $path)
-path=("$HOME/.local/.fzf/bin" $path)
-
-#[ -f $SOURCES_PATH/wlpfo/.profile-host ] && . $SOURCES_PATH/wlpfo/.profile-host
-KEEP_PROMPT=1
-[[ -f $HOME/.profile ]] && . $HOME/.profile
-
-. "$HOME/.local/.fzf/shell/completion.zsh"
-. "$HOME/.local/.fzf/shell/key-bindings.zsh"
-
+PATH="$HOME/.local/bin:$PATH"
+#
 ######### PROMPT ######### 
 
 prompt_dir() {
    prompt_segment 14 $CURRENT_FG '%~'
 }
 
-# Dir: current working directory
-#prompt_dir() {
-#   prompt_segment 14 black '%~'
-#}
-#
-#prompt_context() {
-#  DEFAULT_USER=wlpfo
-#
-#  if [[ "$USER" != "$DEFAULT_USER" ]]; then
-#    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
-#  fi
-#}
-
-alias vim='nvim'
 alias ls='ls --group-directories-first --color=tty'
-alias glg='git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
-
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240"
