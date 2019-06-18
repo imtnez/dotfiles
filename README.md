@@ -1,6 +1,6 @@
 # universals
 
-to isntall execute:
+to install execute:
 
 ```bash
 mkdir $HOME/.local &&\
