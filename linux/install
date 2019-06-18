@@ -80,6 +80,7 @@ exec_scripts() {
   git config --global merge.tool vimdiff
   git config --global diff.tool vimdiff
   git config --global mergetool.vimdiff.cmd $'nvim -d $LOCAL $REMOTE $MERGED -c \'$wincmd w\' -c \'wincmd J\''
+  git config --global credential.helper "store --file ~/.local/.git-credentials"
 }
 
 make_downloads() {
