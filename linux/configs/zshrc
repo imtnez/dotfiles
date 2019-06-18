@@ -13,8 +13,6 @@ antigen bundle git-extras
 antigen theme agnoster
 antigen apply
 
-PATH="$HOME/.local/bin:$PATH"
-#
 ######### PROMPT ######### 
 
 prompt_dir() {
