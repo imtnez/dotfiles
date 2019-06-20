@@ -10,6 +10,8 @@ antigen bundle git
 antigen bundle gitfast
 antigen bundle git-extras
 
+antigen bundle zsh-users/zsh-autosuggestions
+
 antigen theme agnoster
 antigen apply
 
