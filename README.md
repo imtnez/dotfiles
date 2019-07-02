@@ -3,7 +3,5 @@
 to install execute:
 
 ```bash
-mkdir $HOME/.local &&\
-git -C $HOME/.local clone https://github.com/gllera/dotfiles &&\
-$HOME/.local/dotfiles/linux/install
+curl -fsSL https://gist.githubusercontent.com/gllera/5e850834cfeacbb7f0d99a5b50fa5df5/raw/8069ac28414d905aebc59350a638b45551acfa16/dotfiles.sh | bash -es
 ```
