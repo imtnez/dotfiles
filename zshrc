@@ -9,16 +9,15 @@ antigen use oh-my-zsh
 antigen bundle git
 antigen bundle gitfast
 antigen bundle git-extras
-
 antigen bundle zsh-users/zsh-autosuggestions
 
-antigen theme agnoster
 antigen apply
 
 ######### PROMPT ######### 
 
-prompt_dir() {
-   prompt_segment 14 $CURRENT_FG '%~'
-}
+PROMPT='%(!.%{$fg_bold[red]%}.%{$fg_bold[green]%}%n@)%m %{$fg_bold[blue]%}%(!.%1~.%~) $(git_prompt_info)%{$reset_color%}'
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[yellow]%}("
+ZSH_THEME_GIT_PROMPT_SUFFIX=") "
 
 alias ls='ls --group-directories-first --color=tty'
