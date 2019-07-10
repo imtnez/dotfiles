@@ -31,25 +31,16 @@
 #    name = "vim-scripts/Conque-GDB"
 #    merged = false
 
-[[custom_plugins]]
-    name = "junegunn/fzf.vim"
-    merged = false
-
 [[layers]]
 name = "tmux"
 
 [[layers]]
 name = "git"
 
-[[layers]]
-    name = 'autocomplete'
-    enable = false
-
 # Enable autocomplete layer
-# [[layers]]
-# name = 'autocomplete'
-# auto-completion-return-key-behavior = "nil"
-# auto-completion-tab-key-behavior = "nil"
+[[layers]]
+name = 'autocomplete'
+spacevim_autocomplete_method = 'deoplete'
 
 [[layers]]
 name = 'fzf'
@@ -66,7 +57,3 @@ name = 'fzf'
 [[layers]]
 name = "lang#c"
 
-[[layers]]
-name = 'shell'
-default_position = 'bottom'
-default_height = 30

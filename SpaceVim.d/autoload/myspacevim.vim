@@ -8,6 +8,11 @@ function! myspacevim#before() abort
    let g:vimfiler_readonly_file_icon = "X"
    let g:vimfiler_marked_file_icon = "*"
    let g:vimfiler_file_icon = " "
+
+   let g:spacevim_autocomplete_method = "deoplete"
+   let g:spacevim_custom_plugins = [
+      \ ['junegunn/fzf.vim'],
+      \ ]
 endfunction 
 
 function! myspacevim#after() abort
