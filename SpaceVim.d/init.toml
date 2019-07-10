@@ -27,23 +27,24 @@
     bootstrap_before = "myspacevim#before"
     bootstrap_after = "myspacevim#after"
 
-#[[custom_plugins]]
-#    name = "vim-scripts/Conque-GDB"
-#    merged = false
-
 [[layers]]
 name = "tmux"
 
 [[layers]]
 name = "git"
 
-# Enable autocomplete layer
 [[layers]]
 name = 'autocomplete'
-spacevim_autocomplete_method = 'deoplete'
 
 [[layers]]
 name = 'fzf'
+
+[[layers]]
+name = "lang#c"
+
+#[[custom_plugins]]
+#    name = "vim-scripts/Conque-GDB"
+#    merged = false
 
 # [[layers]]
 # name = "VersionControl"
@@ -53,7 +54,4 @@ name = 'fzf'
 
 # [[layers]]
 # name = "cscope"
-
-[[layers]]
-name = "lang#c"
 
