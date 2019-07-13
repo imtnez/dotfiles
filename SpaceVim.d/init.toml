@@ -16,6 +16,7 @@
     # Disable guicolors in basic mode, many terminal do not support 24bit
     # true colors
     enable_guicolors = false
+    filemanager = "nerdtree"
     # Disable statusline separator, if you want to use other value, please
     # install nerd fonts
     statusline_separator = "nil"
@@ -40,7 +41,11 @@ name = "git"
 # Enable autocomplete layer
 [[layers]]
 name = 'autocomplete'
-spacevim_autocomplete_method = 'deoplete'
+
+[[layers]]
+name = "lsp"
+filetypes = ["javascript"]
+
 
 [[layers]]
 name = 'fzf'

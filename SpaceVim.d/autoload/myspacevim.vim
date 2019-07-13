@@ -9,7 +9,7 @@ function! myspacevim#before() abort
    let g:vimfiler_marked_file_icon = "*"
    let g:vimfiler_file_icon = " "
 
-   let g:spacevim_autocomplete_method = "deoplete"
+   let g:spacevim_autocomplete_method = 'coc'
    let g:spacevim_custom_plugins = [
       \ ['junegunn/fzf.vim'],
       \ ]
