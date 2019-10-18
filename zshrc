@@ -1,8 +1,6 @@
 alias .=source
 
 . "$ADOTDIR/.antigen.zsh"
-. "$HOME/.local/fzf/shell/completion.zsh"
-. "$HOME/.local/fzf/shell/key-bindings.zsh"
 
 antigen use oh-my-zsh
 
@@ -21,3 +19,7 @@ ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}("
 ZSH_THEME_GIT_PROMPT_SUFFIX=") "
 
 alias ls='ls --group-directories-first --color=tty'
+
+. "$HOME/.local/fzf/shell/completion.zsh"
+. "$HOME/.local/fzf/shell/key-bindings.zsh"
+

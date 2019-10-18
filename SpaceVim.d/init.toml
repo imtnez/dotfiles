@@ -26,6 +26,7 @@
     buffer_index_type = 4
     bootstrap_before = "myspacevim#before"
     bootstrap_after = "myspacevim#after"
+    filemanager = "nerdtree"
 
 [[layers]]
 name = "tmux"
