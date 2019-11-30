@@ -57,9 +57,9 @@ make_clones() {
     readarray -t arr <<<"$elem"
 
     BRAN=
-    DEST="$HOME/.local/$NAME"
     NAME="${arr[0]}"
     REPO="${arr[1]}"
+    DEST="$HOME/.local/$NAME"
     [[ -z "${arr[2]}" ]] || BRAN="--branch ${arr[2]}"
 
     [[ -z "$force" ]] || rm -rf "$DEST"
