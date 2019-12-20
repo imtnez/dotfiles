@@ -7,3 +7,4 @@ ZDOTDIR="$XDG_CONFIG_HOME"
 ZSH="$XDG_CONFIG_HOME/.oh-my-zsh"
 
 PATH="$HOME/.local/bin:$PATH"
+

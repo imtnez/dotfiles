@@ -11,6 +11,8 @@ antigen bundle zsh-users/zsh-autosuggestions
 
 antigen apply
 
+alias tmux='tmux -u'
+
 ######### PROMPT ######### 
 
 PROMPT='%{$fg_bold[blue]%}%n@%m%{$reset_color%} %{$fg[green]%}%(!.%1~.%~) $(git_prompt_info)%{$reset_color%}$ '
