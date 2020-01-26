@@ -1,5 +1,7 @@
 alias .=source
 
+[ -e ~/.profile ] && emulate bash -c 'source ~/.profile'
+
 . "$ADOTDIR/.antigen.zsh"
 
 antigen use oh-my-zsh
