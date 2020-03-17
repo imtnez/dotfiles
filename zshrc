@@ -21,7 +21,7 @@ PROMPT='%{$fg_bold[blue]%}%n@%m%{$reset_color%} %{$fg[green]%}%(!.%1~.%~) $(git_
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[yellow]%}("
 ZSH_THEME_GIT_PROMPT_SUFFIX=") "
-
+ZSH_THEME="powerlevel9k/powerlevel9k"
 alias ls='ls --group-directories-first --color=tty'
 
 . "$HOME/.local/fzf/shell/completion.zsh"
