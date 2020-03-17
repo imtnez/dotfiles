@@ -10,6 +10,7 @@ downloads=(
 clones=(
   "SpaceVim;github.com/SpaceVim/SpaceVim;v1.3.0"
   "fzf;github.com/junegunn/fzf"
+  "PowerlineFont;github.com/powerline/fonts.git"
 )
 
 links=(
@@ -77,6 +78,7 @@ make_clones() {
 
 exec_scripts() {
   $HOME/.local/fzf/install --bin
+  $HOME/.local/PowerlineFont/install --bin
   chmod u+x $HOME/.local/bin/*
   git config --global core.pager 'diff-so-fancy | less --tabs=4 -RFX'
   git config --global merge.tool vimdiff
