@@ -103,7 +103,7 @@ mkdir -p $HOME/.local/bin
 if [[ -d "$SCRIPTS_PATH" ]]; then
     git -C "$SCRIPTS_PATH" pull
 else
-    git clone https://github.com/gllera/dotfiles $SCRIPTS_PATH
+    git clone https://github.com/imtnez/dotfiles $SCRIPTS_PATH
 fi
 
 make_downloads
