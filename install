@@ -20,6 +20,7 @@ links=(
   "$SCRIPTS_PATH/zshenv;$HOME/.zshenv"
   "$SCRIPTS_PATH/SpaceVim.d;$HOME/.local/.SpaceVim.d"
   "$HOME/.local/SpaceVim;$HOME/.local/nvim"
+  "$HOME/.local/Powelevel9k;$HOME/.local/powerlevel9k"
   "$HOME/.local/fzf/bin/fzf;$HOME/.local/bin/fzf"
   "$HOME/.local/fzf/bin/fzf-tmux;$HOME/.local/bin/fzf-tmux"
 )
