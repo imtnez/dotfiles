@@ -10,6 +10,7 @@ downloads=(
 clones=(
   "SpaceVim;github.com/SpaceVim/SpaceVim;v1.3.0"
   "fzf;github.com/junegunn/fzf"
+  "Powelevel9k;github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k"
 )
 
 links=(
